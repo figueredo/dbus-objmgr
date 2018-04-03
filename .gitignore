@@ -19,3 +19,5 @@ ell/missing
 ell/src/.dirstamp
 ell/src/objmgr
 ell/stamp-h1
+node/node_modules
+node/yarn-error.log
