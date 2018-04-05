@@ -4,7 +4,8 @@
   "main": "client/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node client"
+    "start:client": "babel-node client",
+    "start:server": "babel-node server"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
