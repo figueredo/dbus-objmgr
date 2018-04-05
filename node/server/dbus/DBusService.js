@@ -4,11 +4,13 @@ import DBusDevice from 'dbus/DbusDevice';
 let nextIndex = 0;
 
 class DBusService {
-  constructor(service, serviceName, storeInterfaceFactory, deviceInterfaceFactory) {
+  constructor(service, serviceName, storeInterfaceFactory, deviceInterfaceFactory,
+    objectManagerInterfaceFactory) {
     this.service = service;
     this.serviceName = serviceName;
     this.storeInterfaceFactory = storeInterfaceFactory;
     this.deviceInterfaceFactory = deviceInterfaceFactory;
+    this.objectManagerInterfaceFactory = objectManagerInterfaceFactory;
   }
 
   createStore(store) {
@@ -16,6 +18,7 @@ class DBusService {
     const object = this.service.createObject(path);
     const dbusStore = new DBusDeviceStore(path, object, store, this);
     this.storeInterfaceFactory.create(object, dbusStore);
+    this.objectManagerInterfaceFactory.create(object, dbusStore);
     return dbusStore;
   }
 

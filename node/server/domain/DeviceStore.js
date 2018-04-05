@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import _ from 'lodash';
 import AlreadyExistsError from 'domain/AlreadyExistsError';
 
@@ -7,20 +8,25 @@ class DeviceStore {
   }
 
   async add(device) {
-    if (this.exists(device.address))
+    if (this.exists(device.address)) {
       throw new AlreadyExistsError('Device already exists');
+    }
 
     this.devices.push(device);
   }
 
   async remove(address) {
-    _.remove(this.devices,
-      (device) => this.hasSameAddress(device, address));
+    _.remove(
+      this.devices,
+      device => this.hasSameAddress(device, address),
+    );
   }
 
   exists(address) {
-    return _.some(this.devices,
-      (device) => this.hasSameAddress(device, address));
+    return _.some(
+      this.devices,
+      device => this.hasSameAddress(device, address),
+    );
   }
 
   hasSameAddress(device, address) {

@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start:client": "babel-node client",
-    "start:server": "babel-node server"
+    "start:server": "babel-node server",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

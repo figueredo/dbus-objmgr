@@ -46,6 +46,14 @@ class DBusInterfaceBuilder {
     return this;
   }
 
+  addSignal(name, types) {
+    types = types.map(this.createSignature.bind(this));
+    this.iface.addSignal(name, {
+      types: types
+    });
+    return this;
+  }
+
   createGetter(getterImpl) {
     return async (done) => {
       await executeMethod(this.serviceName, done, getterImpl);
